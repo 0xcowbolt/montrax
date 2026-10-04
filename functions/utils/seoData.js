@@ -104,6 +104,6 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
     whatsNew,
     baseOrigin: baseOrigin.trim(),
     baseUrlUri: baseUrl,
-    downloadLink: baseAmp.trim()
+    ampLink: baseAmp.trim()
   };
 }
