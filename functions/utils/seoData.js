@@ -66,8 +66,6 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
 
   const description = escapeHtml(rawDescription);
   const keywords = escapeHtml(rawKeywords);
-  const downloadLink = `https://download.store-files.com/apk/${uniqueHash}/${encodeURIComponent(brandQuery)}.apk`;
-
   // Ambil semua data pendukung secara paralel
   const [faqs, relatedData, priceInfo, reviewsInfo, paragraphs, whatsNew] = await Promise.all([
     getSelectedFaqs(uniqueHash, finalBrandTitle, baseUrl),
@@ -96,7 +94,6 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
     imageUrl: brandDetails.imageUrl,
     appCategory,
     bgColors,
-    downloadLink,
     faqs,
     similarApps: relatedData.similarApps,
     relatedTopics: relatedData.relatedTopics,
