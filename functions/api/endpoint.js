@@ -62,13 +62,15 @@ export async function onRequest(context) {
   if (!httpHost) httpHost = url.host || 'spin8vip.top';
   const pubHost = httpHost;
   
-  // Gunakan requestURI yang sudah bersih dari post data
+  // Pastikan requestURI memiliki awalan garis miring (slash)
   const cleanUriPath = requestURI.startsWith('/') ? requestURI : '/' + requestURI;
 
-  // Tentukan baseUrl dan baseOrigin dengan benar tanpa duplikasi
   const baseUrl = uriHost ? `https://${pubHost}${uriHost}` : `https://${pubHost}`;
   const baseOrigin = `https://${pubHost}${uriHost}${cleanUriPath}`;
-  const baseAmp = ampPages ? `${ampPages}${cleanUriPath}` : `https://sampx.pages.dev${cleanUriPath}`;
+  
+  // Pastikan baseAmp memiliki fallback domain AMP Anda jika ampPages kosong
+  const defaultAmpDomain = 'https://sampx.pages.dev';
+  const baseAmp = ampPages ? `${ampPages}${cleanUriPath}` : `${defaultAmpDomain}${cleanUriPath}`;
 
   // 1. Cek AI Metadata (llms.txt / ai-catalog.json)
   const aiResponse = await handleAiMetadata(fullCheck, pubHost, url.origin);
