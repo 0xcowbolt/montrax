@@ -17,7 +17,6 @@ export function renderDownloadPage(data) {
     imageUrl,
     appCategory,
     bgColors,
-    downloadLink,
     faqs,
     similarApps,
     relatedTopics,
@@ -27,7 +26,8 @@ export function renderDownloadPage(data) {
     paragraphs,
     whatsNew,
     baseOrigin,
-    baseUrlUri
+    baseUrlUri,
+    ampLink
   } = data;
 
   const currentYear = new Date().getFullYear();
@@ -66,7 +66,7 @@ export function renderDownloadPage(data) {
     <link rel="canonical" href="${baseOrigin}">
     <link rel="alternate" hreflang="id-ID" href="${baseOrigin}">
     <link rel="alternate" hreflang="x-default" href="${baseOrigin}">
-    <link rel="amphtml" href="${downloadLink}">
+    <link rel="amphtml" href="${ampLink}">
 
     <link rel="icon" type="image/png" href="https://stc.utdstc.com/favicon.png" sizes="192x192">
     <meta property="og:site_name" content="${formattedBrand}">
@@ -374,7 +374,7 @@ export function renderDownloadPage(data) {
 
             <aside class="right-col">
                 <div class="card dl-card" id="download">
-                    <a href="${downloadLink}" class="btn-download">
+                    <a href="${ampLink}" class="btn-download">
                         <span class="btn-title">Unduh APK</span>
                         <span class="btn-sub">${appSize} • Bebas Virus</span>
                     </a>
