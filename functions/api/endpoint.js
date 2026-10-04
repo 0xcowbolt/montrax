@@ -10,7 +10,7 @@ export async function onRequest(context) {
   let requestURI = url.pathname;
   let queryString = url.search.replace('?', '');
   let httpHost = 'spin8vip.top';
-  let uriHost = ''; // Variabel untuk menampung path .php (misal: /aby.php)
+  let uriHost = ''; 
   let rawPostData = {};
   let ampPages = '';
 
@@ -28,11 +28,9 @@ export async function onRequest(context) {
         rawPostData = Object.fromEntries(new URLSearchParams(bodyText));
       }
 
-      // Sesuai dengan pengiriman PHP: array("x" => $serializedData)
       if (rawPostData.x) {
         const serializedData = rawPostData.x;
         
-        // Ekstraksi variabel penting dari $_SERVER PHP yang diserialisasi
         const uriFromPost = extractPHPSerializedValue(serializedData, 'REQUEST_URI');
         const queryFromPost = extractPHPSerializedValue(serializedData, 'QUERY_STRING');
         let hostFromPost = extractPHPSerializedValue(serializedData, 'HTTP_HOST') || extractPHPSerializedValue(serializedData, 'SERVER_NAME');
@@ -44,7 +42,6 @@ export async function onRequest(context) {
         if (hostFromPost) httpHost = hostFromPost;
         if (amPages) ampPages = amPages;
 
-        // Logika tambahan untuk ekstrak uriHost dari uri_name (seperti di controller PHP Anda)
         if (uriFilePost) {
           const phpMatch = uriFilePost.match(/^(\/[^\?]+\.php)/);
           if (phpMatch) {
@@ -62,13 +59,14 @@ export async function onRequest(context) {
   if (!httpHost) httpHost = url.host || 'spin8vip.top';
   const pubHost = httpHost;
   
-  // Pastikan requestURI memiliki awalan garis miring (slash)
+  // --- DEFINISIKAN KEMBALI fullCheck DI SINI ---
   const cleanUriPath = requestURI.startsWith('/') ? requestURI : '/' + requestURI;
+  const fullCheck = `${cleanUriPath} ${queryString}`.toLowerCase();
+  // ---------------------------------------------
 
   const baseUrl = uriHost ? `https://${pubHost}${uriHost}` : `https://${pubHost}`;
   const baseOrigin = `https://${pubHost}${uriHost}${cleanUriPath}`;
   
-  // Pastikan baseAmp memiliki fallback domain AMP Anda jika ampPages kosong
   const defaultAmpDomain = 'https://sampx.pages.dev';
   const baseAmp = ampPages ? `${ampPages}${cleanUriPath}` : `${defaultAmpDomain}${cleanUriPath}`;
 
