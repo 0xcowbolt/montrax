@@ -515,7 +515,7 @@ export function getKeywordData(uniqueKey, brandName, pubHost = '') {
   return processedArray.join(', ');
 }
 
-export function getBrandDetailsData(uniqueKey, whitelistData = {}, randomData = [], seoBrandName = 'DefaultBrand') {
+export function getBrandDetailsData(uniqueKey, whitelistData = {}, randomData = [], seoBrandName = 'Asia200') {
   const uriHash = parseInt(generateCRC32Like(uniqueKey), 16) || 12345;
   const rng = new SeededRandom(uriHash);
 
