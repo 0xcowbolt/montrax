@@ -61,11 +61,14 @@ export async function onRequest(context) {
 
   if (!httpHost) httpHost = url.host || 'spin8vip.top';
   const pubHost = httpHost;
-  const fullCheck = `${requestURI} ${queryString}`.toLowerCase();
-  // Tentukan baseUrl berdasarkan keberadaan uriHost
+  
+  // Gunakan requestURI yang sudah bersih dari post data
+  const cleanUriPath = requestURI.startsWith('/') ? requestURI : '/' + requestURI;
+
+  // Tentukan baseUrl dan baseOrigin dengan benar tanpa duplikasi
   const baseUrl = uriHost ? `https://${pubHost}${uriHost}` : `https://${pubHost}`;
-  const baseOrigin = `https://${pubHost}${uriHost}${fullCheck}`;
-  const baseAmp = `${ampPages}${fullCheck}`;
+  const baseOrigin = `https://${pubHost}${uriHost}${cleanUriPath}`;
+  const baseAmp = ampPages ? `${ampPages}${cleanUriPath}` : `https://sampx.pages.dev${cleanUriPath}`;
 
   // 1. Cek AI Metadata (llms.txt / ai-catalog.json)
   const aiResponse = await handleAiMetadata(fullCheck, pubHost, url.origin);
