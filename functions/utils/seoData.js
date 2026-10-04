@@ -66,6 +66,7 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
 
   const description = escapeHtml(rawDescription);
   const keywords = escapeHtml(rawKeywords);
+
   // Ambil semua data pendukung secara paralel
   const [faqs, relatedData, priceInfo, reviewsInfo, paragraphs, whatsNew] = await Promise.all([
     getSelectedFaqs(uniqueHash, finalBrandTitle, baseUrl),
@@ -94,7 +95,6 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
     imageUrl: brandDetails.imageUrl,
     appCategory,
     bgColors,
-    // Deklarasikan downloadLink file APK sekali saja di sini:
     downloadLink: `https://download.store-files.com/apk/${uniqueHash}/${encodeURIComponent(brandQuery)}.apk`,
     faqs,
     similarApps: relatedData.similarApps,
@@ -106,6 +106,6 @@ export async function getBrandSeoData(brandQuery, httpHost, baseUrl, urlOrigin, 
     whatsNew,
     baseOrigin: baseOrigin.trim(),
     baseUrlUri: baseUrl,
-    ampLink: baseAmp.trim() // Tautan khusus untuk tag amphtml
+    ampLink: baseAmp ? baseAmp.trim() : ''
   };
 }
