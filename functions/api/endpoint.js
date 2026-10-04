@@ -121,7 +121,7 @@ export async function onRequest(context) {
   const blacklistedWords = ['install', 'download', 'apk', 'app', 'update', 'mobile', 'index.php', 'aby.php', 'api', 'endpoint'];
   
   if (!brandQuery || blacklistedWords.includes(brandQuery.toLowerCase()) || brandQuery.toLowerCase().endsWith('.php')) {
-    brandQuery = 'default-app';
+    brandQuery = 'asia200';
   }
 
   try {
