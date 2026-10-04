@@ -73,7 +73,7 @@ export function renderDownloadPage(data) {
     <meta property="og:type" content="article">
     <meta property="og:title" content="${seoTitle}">
     <meta property="og:description" content="${description}">
-    <meta property="og:url" content="${downloadLink}">
+    <meta property="og:url" content="${baseOrigin}">
     <meta property="og:image" content="${imageUrl}">
     <meta property="og:image:alt" content="Ikon ${formattedBrand}">
     <meta property="article:published_time" content="${appDate}">
