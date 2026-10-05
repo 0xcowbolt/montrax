@@ -478,7 +478,7 @@ export async function getSimilarAndRelated(uniqueKey, brandCode, appOS = 'Androi
   // Daftar ratusan brand random internal yang jauh lebih banyak
   const brandsList = [
     'Togel138', 'Asia200', 'Slot88', 'Koitoto', 'Stmtoto', 
-    'Togel2win', 'K200m', 'MugoWaras', 'EngineIndo', 'JayaSakti',
+    'Togel2win', 'K200m', 'MUSANGWIN', 'BANSONWIN', 'JayaSakti',
     'GarudaSlot', 'MegaTogel', 'RajanyaToto', 'BandarJp', 'LintasToto',
     'NusantaraSlot', 'JpVip', 'StarSlot', 'Winner138', 'Gacor88',
     'JpTerus', 'SlotMania', 'ZeusMaxwin', 'MahjongWays', 'GatesOfOlympus',
@@ -491,7 +491,7 @@ export async function getSimilarAndRelated(uniqueKey, brandCode, appOS = 'Androi
     'HawkWin', 'SharkSlot', 'WhaleJp', 'DolphinSlot', 'KrakenWin',
     'VikingSlot', 'SpartanJp', 'RomanSlot', 'GreekWin', 'EgyptSlot',
     'MayaWin', 'AztecSlot', 'IncaJp', 'NorseSlot', 'OdinWin',
-    'ThorSlot', 'LokiJp', 'ValhallaSlot', 'AsgardWin', 'AtlantisSlot',
+    'ThorSlot', 'LokiJp', 'AGEN69', 'CERI388', 'OBCTOP',
     'PoseidonJp', 'ZeusSlot', 'HeraWin', 'ApolloSlot', 'AresJp',
     'HermesSlot', 'AthenaWin', 'ArtemisSlot', 'DemeterJp', 'DionysusSlot',
     'HadesWin', 'CronusSlot', 'RheaJp', 'GaiaSlot', 'UranusWin',
